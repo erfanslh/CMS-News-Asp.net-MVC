@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.NewsViewModel>
+
+<div class="banner-area banner-inner-1 bg-black" id="banner">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-post-wrap style-white">
+                        <div class="thumb">
+                            <img src="~/Images/News/@item.ImageName" alt="@item.NewsTitle">
+                            <a class="tag-base tag-blue" href="/Home/newsDetail/@item.NewsId">@item.newsGroup.NewsGroupTitle <span class="badge badge-light">@item.newsGroup.FkNews.Count</span>
+                            <img style="width:18px;height:18px; margin-left:5px;" src="~/Images/NewsGroup/@item.newsGroup.NewsGroupImage" /></a>
+                        </div>
+                        <div class="details">
+                            <h6 class="title">
+                            <a href="/Home/newsDetail/@item.NewsId">
+                                @item.NewsTitle</a></h6>
+                            <div class="post-meta-single mt-3">
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@item.RegisterDate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@*<div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <img src="/assets/img/post/2.png" alt="img">
+            <a class="tag-base tag-orange" href="#">Food</a>
+        </div>
+        <div class="details">
+            <h6 class="title"><a href="#">Rocket Lab will resume launches no sooner than August 27th</a></h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>08.22.2020</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <img src="/assets/img/post/3.png" alt="img">
+            <a class="tag-base tag-blue" href="#">Tech</a>
+        </div>
+        <div class="details">
+            <h6 class="title"><a href="#">Google Drive flaw may attackers fool you into install malware</a></h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>08.22.2020</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <img src="/assets/img/post/4.png" alt="img">
+            <a class="tag-base tag-orange" href="#">Food</a>
+        </div>
+        <div class="details">
+            <h6 class="title"><a href="#">TikTok will sue the US over threatened ban</a></h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>08.22.2020</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>*@

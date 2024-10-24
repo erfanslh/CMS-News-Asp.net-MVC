@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.NewsViewModel>
+
+
+<div class="col-lg-3 col-md-6">
+    <div class="section-title">
+
+            <h6 class="title">New in Tech</h6>
+        
+    </div>
+    <div class="post-slider owl-carousel">
+        <div class="item">
+            @foreach (var item in Model)
+            {
+                <div class="single-post-wrap">
+                    <div class="thumb">
+                        <img src="~/Images/News/@item.ImageName" alt="@item.NewsTitle">
+                    </div>
+                    <div class="details">
+                        <div class="post-meta-single mb-4 pt-1">
+                            <ul>
+                                <li><a class="tag-base tag-blue" href="/Home/newsDetail/@item.NewsId">Tech</a></li>
+                                <li><i class="fa fa-clock-o"></i>@item.RegisterDate</li>
+                            </ul>
+                        </div>
+                        <h6 class="title"><a href="#">@item.NewsTitle</a></h6>
+                        <p>@item.NewsDescription.Substring(3,50) ...</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+
+
+
+    </div>
+</div>
+

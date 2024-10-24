@@ -1,0 +1,162 @@
+﻿@model CMSNachricht.Models.ViewModel.NewsViewModel
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = Model.NewsTitle;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+            .post-meta .see,
+            .post-meta .like {
+                margin-right: 10px;
+            }
+
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .post-content {
+            line-height: 1.6;
+        }
+
+        .comments {
+            margin-top: 30px;
+        }
+
+            .comments h3 {
+                margin-bottom: 10px;
+            }
+
+        .comment {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+            .comment p {
+                margin: 0;
+            }
+
+        .add-comment {
+            margin-top: 30px;
+        }
+
+            .add-comment h3 {
+                margin-bottom: 15px;
+            }
+
+            .add-comment textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .add-comment button {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .add-comment button:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Detail Post</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="~/assets/css/vendor.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Action("navMenu", "Home")
+    <div class="container">
+        <header>
+            <h1>Detail der Nachricht</h1>
+        </header>
+        <main>
+            <article>
+                <h2 class="post-title">@Model.NewsTitle</h2>
+                <div class="post-meta">
+                    <span class="see text-info"><i class="fa fa-eye">@Model.See views</i></span>
+                    <span class="like text-danger"><i class="fa fa-thumbs-up">@Model.Like likes</i></span>
+                </div>
+                <div class="post-image">
+                    <img src="~/Images/News/@Model.ImageName" alt="@Model.NewsTitle">
+                </div>
+                <div class="post-content">
+                    <p>@Html.Raw(Model.NewsDescription)</p>
+                </div>
+
+                <div class="comments">
+                    <h3>Comments</h3>
+                    <!-- Loop through comments here if applicable -->
+                    <!-- Example: -->
+                    <!-- <div class="comment">
+                        <p>Comment content</p>
+                    </div> -->
+                </div>
+                <div class="add-comment">
+                    <h3>Add a Comment</h3>
+                    <form action="submit_comment.php" method="POST">
+                        <textarea name="comment" id="comment" rows="5" placeholder="Enter your comment here"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+
+            </article>
+        </main>
+    </div>
+</body>
+</html>
+

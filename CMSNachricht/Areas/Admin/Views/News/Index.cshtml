@@ -1,0 +1,119 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.NewsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.newsGroup.NewsGroupTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Like)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.See)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @if (item.ImageName != "Null.png")
+        {
+            <img src="~/Images/News/@item.ImageName" style="border-radius:20px; width:100px;height:60px;" />
+        }
+        else
+        {
+            <img src="~/Images/News/Null.png" style="border-radius:20px;width:100px;height:60px;" />
+        }
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.newsGroup.NewsGroupTitle)
+        <img src="~/Images/NewsGroup/@item.newsGroup.NewsGroupImage" class="img20px" />
+
+        @*For Colored NewsGroup Titel*@
+
+        @*@Html.DisplayFor(modelItem => item.news)
+
+            @if (item.NewsGroupId == 1)
+            {
+                <span class="text-success fw-semibold"> Sport </span>
+
+            }
+            else if (item.NewsGroupId == 2)
+            {
+                <span class="text-warning fw-semibold"> Wirtschaft </span>
+
+            }
+            else if (item.NewsGroupId == 3)
+            {
+                <span class="text-primary fw-semibold"> Politik </span>
+
+            }*@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RegisterDate)
+    </td>
+    <td>
+        @if (item.IsActive == true)
+        {
+            <span class="text-primary fw-bold" style="font-size:12px;">Veröffentlicht</span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#5cb85c" class="bi bi-check" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                </svg>
+            </span>
+
+        }
+        else
+        {
+            <span class="text-danger fw-bold" style="font-size:12px;">Pausiert</span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </span>
+
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Like)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.See)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.NewsId }, new { @class = " btn btn-warning btn-sm" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.NewsId }, new { @class = "btn btn-primary btn-sm" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.NewsId }, new { @class = "btn btn-danger btn-sm" })
+    </td>
+
+</tr>
+}
+
+</table>

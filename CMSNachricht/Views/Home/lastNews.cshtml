@@ -1,0 +1,26 @@
+﻿@model CMSNachricht.Models.ViewModel.NewsViewModel
+
+<div class="banner-inner pt-5" style="background-color: #102950";>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="thumb after-left-top">
+                    <img src="~/Images/News/@Model.ImageName" alt="@Model.NewsTitle">
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="banner-details mt-4 mt-lg-0">
+                    <div class="post-meta-single">
+                        <ul>
+                            <li><a class="tag-base tag-blue" href="/Home/newsDetail/@Model.NewsId">@Model.newsGroup.NewsGroupTitle</a></li>
+                            <li class="date"><i class="fa fa-clock-o"></i>@Html.DisplayFor(item=> item.RegisterDate)</li>
+                        </ul>
+                    </div>
+                    <h2>@Model.NewsTitle</h2>
+                    <p> @Model.NewsDescription.Substring(3,70) ...</p>
+                    <a class="btn btn-blue" href="/Home/newsDetail/@Model.NewsId">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

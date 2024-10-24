@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.CommentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Alle Kommentare</h2>
+@{ 
+    int ListId = 1;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            <span>Reihe</span>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news.NewsTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @ListId
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news.NewsTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CommentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
+        </td>
+    </tr>
+    ListId += 1;
+    
+}
+
+</table>

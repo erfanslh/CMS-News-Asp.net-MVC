@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.NewsViewModel>
+
+
+<div class="col-lg-3 col-md-6">
+    <div class="section-title">
+        <h6 class="title">Most Viewed Posts</h6>
+    </div>
+    <div class="post-slider owl-carousel">
+        <div class="item">
+            <div class="trending-post">
+                @foreach (var item in Model)
+                {
+
+                    <div class="single-post-wrap style-overlay">
+                        <div class="thumb">
+                            <a href="/Home/newsDetail/@item.NewsId">
+                                <img src="~/Images/News/@item.ImageName" alt="@item.NewsTitle">
+                            </a>
+                        </div>
+                        <div class="details">
+                            <div class="post-meta-single">
+                                <p class="text-warning"><i class="fa fa-eye text-warning"></i> Aufrufe @item.See </p>
+                                <p><i class="fa fa-clock-o"></i>@item.RegisterDate</p>
+                            </div>
+                            <h6 class="title"><a href="/Home/newsDetail/@item.NewsId">@item.NewsTitle.Substring(0, 20) ...</a></h6>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

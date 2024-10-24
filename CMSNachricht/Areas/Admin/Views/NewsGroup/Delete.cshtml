@@ -1,0 +1,40 @@
+﻿@model CMSNachricht.Models.ViewModel.NewsGroupViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Sind Sie sicher, den Item zuentfernen</h3>
+<div>
+    <h4>NewsGroup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsGroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsGroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsGroupImage)
+        </dt>
+
+        <dd>
+            <img src="~/Images/NewsGroup/@Model.NewsGroupImage" class="img80px" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions form-control-color">
+            <input type="submit" value="Entfernen" class="btn btn-danger" /> |
+            @Html.ActionLink("Zurück zum List", "Index")
+        </div>
+    }
+</div>

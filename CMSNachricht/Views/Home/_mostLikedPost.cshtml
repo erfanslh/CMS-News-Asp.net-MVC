@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CMSNachricht.Models.ViewModel.NewsViewModel>
+
+
+<div class="col-lg-3 col-md-6">
+    <div class="section-title">
+        <h6 class="title">Most liked Posts</h6>
+    </div>
+    <div class="post-slider owl-carousel">
+        <div class="item">
+            @foreach (var item in Model)
+            {
+                <div class="single-post-list-wrap">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="~/Images/News/@item.ImageName" alt="img">
+                        </div>
+                        <div class="media-body">
+                            <div class="details">
+                                <div class="post-meta-single">
+                                    <ul>
+                                        <li><div id="showLike_@item.NewsId" style="cursor:pointer">@Html.Action("ShowLike", "Home", new { newsId = item.NewsId, state = true })</div></li>
+                                    </ul>
+                                </div>
+                                @if (item.NewsTitle.Length >= 20)
+                                {
+                                    <h6 class="title"><a href="/Home/newsDetail/@item.NewsId">@item.NewsTitle.Substring(0, 20) ...</a></h6>
+                                }
+                                else
+                                {
+                                    <h6 class="title"><a href="/Home/newsDetail/@item.NewsId">@item.NewsTitle</a></h6>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/JavaScript.js"></script>
